@@ -137,19 +137,20 @@ document.getElementById("ts").innerHTML="Hello"
         // other.js
         var appInstance = getApp()
         console.log(appInstance.globalData) // I am global data
+```
+## 2.4 page 内数据和方法
+```javascript
+	//改变数据
+	this.setData({
+	    message:"你好 米娜！"
+	})
+	//获取数据
+	this.data.message
 
-    ## 5.page 内数据和方法
-        //改变数据
-        this.setData({
-            message:"你好 米娜！"
-        })
-        //获取数据
-        this.data.message
+	// 调用本页方法：
+	this.method();
 
-        // 调用本页方法：
-        this.method();
-
-    ##其他
-        // currentTarget 事件属性返回其监听器触发事件的节点，即当前处理该事件的元素、文档或窗口。
-        // event.currentTarget
+	##其他
+	// currentTarget 事件属性返回其监听器触发事件的节点，即当前处理该事件的元素、文档或窗口。
+	// event.currentTarget
 ```
