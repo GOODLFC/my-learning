@@ -54,37 +54,37 @@ document.getElementById("ts").innerHTML="Hello"
     文字超链接格式：[要显示的文字](链接的地址"鼠标悬停显示")，在URL之后用双引号括起来一个字符串，即鼠标悬停显示的文本，可不写
     
 ## 二、微信小程序关键知识点<br>
-##1.http
+### 2.1 http
+```javascript
 	wx.request(OBJECT);
-
 	例子：
-		wx.request( {
-			url: "http://op.juhe.cn/onebox/weather/query",
-			header: {
-				"Content-Type": "application/x-www-form-urlencoded"
-			},
-			method: "POST",
-		//data: { cityname: "上海", key: "1430ec127e097e1113259c5e1be1ba70" },
-			data: Util.json2Form( { cityname: "上海", key: "1430ec127e097e1113259c5e1be1ba70" }),
-			complete: function( res ) {
-				that.setData( {
-					toastHidden: false,
-					toastText: res.data.reason,
-					city_name: res.data.result.data.realtime.city_name,
-					date: res.data.result.data.realtime.date,
-					info: res.data.result.data.realtime.weather.info,
-				});
-				if( res == null || res.data == null ) {
-					console.error( '网络请求失败' );
-					return;
-				}
+	wx.request( {
+		url: "http://op.juhe.cn/onebox/weather/query",
+		header: {
+			"Content-Type": "application/x-www-form-urlencoded"
+		},
+		method: "POST",
+	//data: { cityname: "上海", key: "1430ec127e097e1113259c5e1be1ba70" },
+		data: Util.json2Form( { cityname: "上海", key: "1430ec127e097e1113259c5e1be1ba70" }),
+		complete: function( res ) {
+			that.setData( {
+				toastHidden: false,
+				toastText: res.data.reason,
+				city_name: res.data.result.data.realtime.city_name,
+				date: res.data.result.data.realtime.date,
+				info: res.data.result.data.realtime.weather.info,
+			});
+			if( res == null || res.data == null ) {
+				console.error( '网络请求失败' );
+				return;
 			}
-		})
-
-##2.路由
+		}
+	})
+```
+### 2.2 路由
+```javascript
 	// 一、保留当前页面，跳转到应用内的某个页面，使用wx.navigateBack可以返回到原页面。
 	// 注意：目前页面路径最多只能十层。
-    ```javascript
 		wx.navigateTo(OBJECT)
 
 		// 示例1
@@ -130,8 +130,9 @@ document.getElementById("ts").innerHTML="Hello"
 	// wx.redirectTo()是关闭当前页面，跳转到某个页面，跳转页面后不能返回上一页。
 
 	// 等等
-
-    ##4.全局方法和数据
+```
+### 2.3 全局方法和数据
+```javascript
         // 全局的 getApp() 函数可以用来获取到小程序实例。
         // other.js
         var appInstance = getApp()
