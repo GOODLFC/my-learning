@@ -146,11 +146,29 @@ document.getElementById("ts").innerHTML="Hello"
 	})
 	//获取数据
 	this.data.message
-
+	
+	//重点,若要用传参的形式设置数组的值，要用[]将字符串参数值括起来
+	//示例一
+		Page({
+		    data: {
+			plaintPerList: []
+			}
+		})
+		var type = 'plaintPerList';
+		var list = [];
+		this.setData({
+		    [type]: list
+		})
+	//示例二
+		var printPrice = "item["+i+"].print_price";  
+		    this.setData({  
+			[printPrice]: e.detail.value   
+		    });
+	
+	//其他
 	// 调用本页方法：
 	this.method();
 
-	##其他
 	// currentTarget 事件属性返回其监听器触发事件的节点，即当前处理该事件的元素、文档或窗口。
 	// event.currentTarget
 ```
