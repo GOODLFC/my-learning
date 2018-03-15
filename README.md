@@ -138,7 +138,7 @@ document.getElementById("ts").innerHTML="Hello"
         var appInstance = getApp()
         console.log(appInstance.globalData) // I am global data
 ```
-## 2.4 page 内数据和方法
+### 2.4 page 内数据和方法
 ```javascript
 	//改变数据
 	this.setData({
@@ -163,12 +163,3 @@ document.getElementById("ts").innerHTML="Hello"
 		var printPrice = "item["+i+"].print_price";  
 		    this.setData({  
 			[printPrice]: e.detail.value   
-		    });
-	
-	//其他
-	// 调用本页方法：
-	this.method();
-
-	// currentTarget 事件属性返回其监听器触发事件的节点，即当前处理该事件的元素、文档或窗口。
-	// event.currentTarget
-```
