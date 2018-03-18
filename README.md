@@ -138,13 +138,15 @@ document.getElementById("ts").innerHTML="Hello"
         var appInstance = getApp()
         console.log(appInstance.globalData) // I am global data
 ```
-### 2.4 page 内数据和方法
+### 2.4 数据和事件
+    #### 2.4.1改变数据
 ```javascript
-	//改变数据
 	this.setData({
 	    message:"你好 米娜！"
 	})
-	//获取数据
+```
+  #### 2.4.2 获取数据
+```javascript
 	this.data.message
 	
 	//重点,若要用传参的形式设置数组的值，要用[]将字符串参数值括起来
@@ -162,4 +164,31 @@ document.getElementById("ts").innerHTML="Hello"
 	//示例二
 		var printPrice = "item["+i+"].print_price";  
 		    this.setData({  
-			[printPrice]: e.detail.value   
+			[printPrice]: e.detail.value  
+```
+  #### 2.4.3 通过事件传递数据 dataset
+```javascript
+	// target 触发事件的源组件
+	// currentTarget 事件绑定的当前组件
+		//-----wxml----
+		<view class="weui-cell__bd">
+		    <input class="weui-input" value="{{item.name}}" placeholder="请输入姓名" bindinput="saveEditor"
+		       data-editor-Type="plaintPerList" data-json-Key="name" data-editor-Index="{{index}}"/>
+		</view>
+		//-----js----		
+		saveEditor: function(e) {
+			// type 数组对象名称
+			// index 位置
+			// jsonKey 数组属性名
+			var that = this;
+			var type = e.currentTarget.dataset.editorType,
+			  index = e.currentTarget.dataset.editorIndex,
+			  jsonKey = e.currentTarget.dataset.jsonKey;
+		  	var list = that.data[type];
+			list[index][jsonKey] = e.detail.value;
+			// 重新赋值
+			that.setData({
+			[type]: list
+			})
+		},
+```
